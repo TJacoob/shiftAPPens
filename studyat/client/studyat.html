@@ -29,7 +29,33 @@
   
   <div class="container">
 	  <div class="row">
-		  {{#each tasks}}
+		  {{> search}}
+	  </div>
+  </div>
+
+  <div class="container">
+	  <div class="row">
+		  {{#each searchShow}}
+		  	{{> topplaces}}
+		  {{/each}}
+	  </div>
+  </div>
+
+  <hr>
+
+  <div class="container">
+	  <div class="row">
+		  {{#each toprating}}
+		  	{{> topplaces}}
+		  {{/each}}
+	  </div>
+  </div>
+
+  <hr>
+
+  <div class="container">
+	  <div class="row">
+		  {{#each mostrecent}}
 		  	{{> topplaces}}
 		  {{/each}}
 	  </div>
@@ -40,3 +66,10 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="/studyat.js"></script>
 </body>
+
+<template name="search">
+	<form class="newtask">
+		<input type="text" name="field" placeholder="Search:"/>
+		<input type="submit" value="GO" />
+	</form>
+</template>

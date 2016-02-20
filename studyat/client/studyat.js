@@ -1,33 +1,56 @@
 Tasks = new Mongo.Collection("tasks");
- 
+
+//receive = new Mongo.Collection("receive");
+
+
+input = new ReactiveVar();
+
+
 if (Meteor.isClient) {
-  console.log("1")
   // This code only runs on the client
   Template.body.helpers({
-    tasks: function () {
+    toprating: function () {
       // Show newest tasks at the top
-      return Tasks.find({}, {sort: {createdAt: -1}});
+      return Tasks.find({}, {sort: {rating: -1}, limit: 3});
+    },
+
+    mostrecent: function() {
+
+      return Tasks.find({}, {sort: {createdAt : -1}, limit:3});
+    },
+    
+    searchShow: function() {
+
+      //var log = receive.find({}, {_id:0});
+
+      var aux = input.get()
+      return Tasks.find({type:aux});
     }
-  });/*
-  console.log("2")
-  Template.submit.events({
-    "submit .new-task": function (event) {
+
+  });
+
+  Template.search.events({
+    "submit .newtask": function (event) {
       // Prevent default browser form submit
       event.preventDefault();
  
       // Get value from form element
-      var text = event.target.text.value;     
+      field = event.target.field.value;
+      /*
+      Receive.insert({
+        inputLog: field
+      });
+      */
 
-      // Insert a task into the collection
-      Tasks.insert({
-        nome: text,
-        createdAt: new Date() // current time
-      });     
-      console.log("3")
+      input.set(field);
+
+
       // Clear form
-      event.target.text.value = "";
+      event.target.field.value = "";
+
+
     }
-  });*/
+  });
 }
 
 if (Meteor.isServer) {
