@@ -1,0 +1,89 @@
+<template name="form">
+  <form class="new-task">
+    <div class="spacer"></div>
+    <div class="container">
+      <h3>Adiciona a tua faculdade ou sítio.</h3>
+      <hr>
+    </div>
+    <div class="container">
+    
+      <input type="text" class="form-control" name="name" placeholder="Nome do sítio" />
+      <input type="text" class="form-control" name="country" placeholder="País" />
+      <input type="text" class="form-control" name="city" placeholder="Cidade" />
+
+    </div>
+    <hr>
+    <div class="container">
+
+      <select name="type" class="form-control">
+        <option value="Escola">Escola</option>
+        <option value="Biblioteca">Biblioteca</option>
+        <option value="Outros">Outros</option>
+      </select>
+      <input type="text" class="form-control" name="location" placeholder="Coordenadas GPS" />
+      <input type="text" class="form-control" name="close_locations" placeholder="Alguns sítios perto" />
+
+    </div>
+    <hr>
+      <div class="container">
+        <input type="text" class="form-control input-lg" name="description" placeholder="Descreve o sítio" />
+        <span class="help-block">Aqui, explica o que é que se faz neste sítio, e quais as condições que existem.</span>
+        <input type="text" class="form-control input-lg" name="opinion" placeholder="Qual é a tua opinião sobre este sítio?" />
+        <span class="help-block">Agora, descreve o que torna este sítio bom ou mau para ti.</span>        
+     <!-- <input type="file" class="form-control" name="pictures" />
+      <hr/>
+        {{#each images}}
+          <div>
+            {{this.name}}: <a href="{{this.url}}" target="_blank"><img width="50" src="{{this.url}}" alt="" class="thumbnail" /></a>
+          </div>
+            {{/each}}  -->
+      </div>
+    <hr>
+    <div class="container">
+      <h3>Acessos</h3>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="button-group">
+              <button type="button" class="btn btn-default dropdown-toggle center-block" data-toggle="dropdown"><span>Quais os acessos ao sítio?</span><span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a class="medium" data-value="Autocarro" tabIndex="-1"><input type="checkbox"/>&nbsp;Autocarro</a></li>
+                <li><a class="medium" data-value="Metro" tabIndex="-1"><input type="checkbox"/>&nbsp;Metro</a></li>
+                <li><a class="medium" data-value="Comboio" tabIndex="-1"><input type="checkbox"/>&nbsp;Comboio</a></li>
+                <li><a class="medium" data-value="EstacionamentoPago" tabIndex="-1"><input type="checkbox"/>&nbsp;Estacionamento Pago</a></li>
+                <li><a class="medium" data-value="EstacionamentoCoberto" tabIndex="-1"><input type="checkbox"/>&nbsp;Estacionamento Coberto</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="button-group">
+              <button type="button" class="btn btn-default dropdown-toggle center-block" data-toggle="dropdown"><span>Como classificas os acessos?</span><span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a class="medium" data-value="Fácil" tabIndex="-1"><input type="checkbox"/>&nbsp;Acessos Fáceis/Bons</a></li>
+                <li><a class="medium" data-value="Médio" tabIndex="-1"><input type="checkbox"/>&nbsp;Acessos Razoáveis</a></li>
+                <li><a class="medium" data-value="Dificil" tabIndex="-1"><input type="checkbox"/>&nbsp;Acessos Dificeís/Poucos</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="container">
+
+      <input type="text" class="form-control" name="tags" placeholder="tags">
+      <hr>
+      <input type="submit" class="form-control" value="Submeter" />
+    
+    </div>
+  </form>
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+  <div class="spacer"></div>
+</template>
