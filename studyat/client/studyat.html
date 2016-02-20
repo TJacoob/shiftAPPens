@@ -26,9 +26,14 @@
  	</div>
 
   <div class="spacer"></div>
-
-  {{> topplaces}}
   
+  <div class="container">
+	  <div class="row">
+		  {{#each tasks}}
+		  	{{> topplaces}}
+		  {{/each}}
+	  </div>
+  </div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
