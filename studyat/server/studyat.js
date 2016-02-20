@@ -8,7 +8,7 @@ if (Meteor.isClient) {
       // Show newest tasks at the top
       return Tasks.find({}, {sort: {createdAt: -1}});
     }
-  });
+  });/*
   console.log("2")
   Template.submit.events({
     "submit .new-task": function (event) {
@@ -27,7 +27,7 @@ if (Meteor.isClient) {
       // Clear form
       event.target.text.value = "";
     }
-  });
+  });*/
 }
 
 if (Meteor.isServer) {
@@ -35,3 +35,4 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
 }
+
