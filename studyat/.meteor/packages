@@ -24,7 +24,11 @@ meteorhacks:npm
 
 npm-container
 <<<<<<< HEAD
+<<<<<<< HEAD
 reactive-var
+=======
+yogiben:autoform-tags
+>>>>>>> origin/master
 =======
 yogiben:autoform-tags
 >>>>>>> origin/master
