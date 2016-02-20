@@ -1,0 +1,67 @@
+<template name="form">
+  <form class="new-task">
+    <div class="spacer"></div>
+    <div class="container">
+      <h3>Adiciona a tua faculdade ou sítio.</h3>
+      <hr>
+    </div>
+    <div class="container">
+    
+      <input type="text" class="form-control" name="name" placeholder="Nome do sítio" />
+      <input type="text" class="form-control" name="country" placeholder="País" />
+      <input type="text" class="form-control" name="city" placeholder="Cidade" />
+
+    </div>
+    <hr>
+    <div class="container">
+
+      <select name="type" class="form-control">
+        <option value="Escola">Escola</option>
+        <option value="Biblioteca">Biblioteca</option>
+        <option value="Outros">Outros</option>
+      </select>
+      <input type="text" class="form-control" name="location" placeholder="Coordenadas GPS" />
+      <input type="text" class="form-control" name="close_locations" placeholder="Alguns sítios perto" />
+
+    </div>
+    <hr>
+      <div class="container">
+        <input type="text" class="form-control input-lg" name="description" placeholder="Descreve o sítio" />
+        <span class="help-block">Aqui, explica o que é que se faz neste sítio, e quais as condições que existem.</span>
+        <input type="text" class="form-control input-lg" name="opinion" placeholder="Qual é a tua opinião sobre este sítio?" />
+        <span class="help-block">Agora, descreve o que torna este sítio bom ou mau para ti.</span>        
+     <!-- <input type="file" class="form-control" name="pictures" />
+      <hr/>
+        {{#each images}}
+          <div>
+            {{this.name}}: <a href="{{this.url}}" target="_blank"><img width="50" src="{{this.url}}" alt="" class="thumbnail" /></a>
+          </div>
+            {{/each}}  -->
+      </div>
+    <hr>
+    <div class="container">
+      <h3>Acessos</h3>
+      <p>O sítio tem alguns destes acessos?</p>
+      <div class="checkbox">
+        <label class="checkbox-inline"><input name="autocarro" type="checkbox" value="Autocarro">Autocarro</label>
+        <label class="checkbox-inline"><input name="metro" type="checkbox" value="Metro">Metro</label>
+        <label class="checkbox-inline"><input name="comboio" type="checkbox" value="Comboio">Comboio</label>
+        <label class="checkbox-inline"><input name="estacionamentopago" type="checkbox" value="EstacionamentoPago">Estacionamento Pago</label>
+        <label class="checkbox-inline"><input name="estacionamentogratuito" type="checkbox" value="EstacionamentoGratuito">Estacionamento Gratuito</label>
+      </div>
+      <p>No geral, os acessos ao sítio são:</p>
+      <div class="checkbox">
+        <label class="checkbox-inline"><input name="faceis" type="checkbox" value="Bom">Fáceis e/ou Bons</label>
+        <label class="checkbox-inline"><input name="razoaveis" type="checkbox" value="Médio">Razoáveis</label>
+        <label class="checkbox-inline"><input name="mau" type="checkbox" value="Mau">Maus e/ou Dificeís.</label>
+      </div>
+    </div>
+    <hr>
+    <div class="container">
+      <input type="text" class="form-control" name="tags" placeholder="Tags">
+      <hr>
+      <input type="submit" class="form-control" value="Submeter" />
+      <br>
+    </div>
+  </form>
+</template>

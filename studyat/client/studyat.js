@@ -29,6 +29,69 @@ if (Meteor.isClient) {
 
   });
 
+  Template.form.events({
+    "submit .new-task": function (event) {
+      // Prevent default browser form submit
+      event.preventDefault();
+ 
+      // Get value from form element
+      var name = event.target.name.value;
+      var country = event.target.country.value;
+      var city = event.target.city.value;
+      var location = event.target.location.value;
+      var type = event.target.type.value;
+      var description = event.target.description.value;
+      var opinion = event.target.opinion.value;
+      var close_locations = event.target.close_locations.value;
+      var autocarro = event.target.autocarro.checked;
+      var metro = event.target.metro.checked;
+      var comboio = event.target.comboio.checked;
+      var estacionamentopago = event.target.estacionamentopago.checked;
+      var estacionamentogratuito = event.target.estacionamentogratuito.checked;
+      var faceis = event.target.faceis.checked;
+      var razoaveis = event.target.razoaveis.checked;
+      var mau = event.target.mau.checked;
+
+      // Insert a task into the collection
+      Tasks.insert({
+        name: name,
+        country: country,
+        city: city,
+        location: location,
+        type: type,
+        description: description,
+        opinion: opinion,
+        close_locations: close_locations,
+        autocarro: autocarro,
+        metro: metro,
+        comboio: comboio,
+        estacionamentopago: estacionamentopago,
+        estacionamentogratuito: estacionamentogratuito,
+        faceis: faceis,
+        razoaveis: razoaveis,
+        mau: mau,
+        createdAt: new Date() // current time
+      });     
+      
+      // Clear form
+      event.target.name.value = "";
+      event.target.country.value = "";
+      event.target.city.value = "";
+      event.target.location.value = "";
+      event.target.type.value = "";
+      event.target.description.value = "";
+      event.target.opinion.value = "";
+      event.target.close_locations.value = "";
+      event.target.autocarro.checked = false;
+      event.target.metro.checked = false;
+      event.target.comboio.checked = false;
+      event.target.estacionamentopago.checked = false;
+      event.target.faceis.checked = false;
+      event.target.razoaveis.checked = false;
+      event.target.mau.checked = false;
+    }
+  });
+
   Template.search.events({
     "submit .newtask": function (event) {
       // Prevent default browser form submit
