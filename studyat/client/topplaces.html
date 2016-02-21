@@ -1,11 +1,15 @@
 <template name="topplaces">
 
 	  <div class="col-md-4">
-	    <h4><span class="text">{{text}}</span></h4>
-	    <h4><span class="text">{{city}}</span></h4>
-	    <h4><span class="text">{{type}}</span></h4>
-	    <h4><span class="text">Rating: {{rating}}</span></h4>
-	    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+	    <h4><a class="single" ><span class="text">{{name}}</span></a></h4>
+	    <div class="thumbnail">
+            <img src="http://placehold.it/350x150" alt="..." />
+            <div class="wrapper">
+    			<div class="caption post-content">
+                	<h4><span class="text">{{type}}</span></h4>
+            	</div>
+        	</div>
+    	</div>
 	  </div>
 
 

@@ -2,6 +2,13 @@ Tasks = new Mongo.Collection("tasks");
 
 //receive = new Mongo.Collection("receive");
 
+searchMode = new ReactiveVar(false);
+addMode = new ReactiveVar(false);
+loginMode = new ReactiveVar(false);
+mainMode = new ReactiveVar(true);
+singleMode = new ReactiveVar(false);
+selected = new ReactiveVar();
+
 
 input = new ReactiveVar();
 
@@ -18,6 +25,11 @@ if (Meteor.isClient) {
 
       return Tasks.find({}, {sort: {createdAt : -1}, limit:3});
     },
+
+    testsingle: function() {
+
+      return Tasks.find({}, {sort: {createdAt : -1}, limit:1});
+    },
     
     searchShow: function() {
 
@@ -25,8 +37,64 @@ if (Meteor.isClient) {
 
       var aux = input.get()
       return Tasks.find({type:aux});
-    }
+    },
 
+    isSearch: function() {
+      return searchMode.get();
+    },
+
+    isAdd: function() {
+      return addMode.get();
+    },
+
+    isLogin: function() {
+      return loginMode.get();
+    },
+
+    isMain: function() {
+      return mainMode.get();
+    },
+
+    isSingle: function() {
+      return singleMode.get();
+    },
+
+    getPlace: function() {
+      var sel= selected.get();
+      return Tasks.find({_id:sel});
+    }
+  });
+
+  Template.body.events({
+    'click .home' : function(){
+      searchMode.set(false);
+      addMode.set(false);
+      mainMode.set(true);
+      loginMode.set(false);
+      singleMode.set(false);
+    },
+    'click .add' : function(){
+      searchMode.set(false);
+      addMode.set(true);
+      mainMode.set(false);
+      loginMode.set(false);
+      singleMode.set(false);
+    },
+    'click .login' : function(){
+      searchMode.set(false);
+      addMode.set(false);
+      mainMode.set(false);
+      loginMode.set(true);
+      singleMode.set(false);
+    },
+    'click .single' : function(){
+      searchMode.set(false);
+      addMode.set(false);
+      mainMode.set(false);
+      loginMode.set(false);
+      singleMode.set(true);
+      selected.set(this._id);
+    }
   });
 
   Template.form.events({
@@ -43,14 +111,30 @@ if (Meteor.isClient) {
       var description = event.target.description.value;
       var opinion = event.target.opinion.value;
       var close_locations = event.target.close_locations.value;
-      var autocarro = event.target.autocarro.checked;
-      var metro = event.target.metro.checked;
-      var comboio = event.target.comboio.checked;
-      var estacionamentopago = event.target.estacionamentopago.checked;
-      var estacionamentogratuito = event.target.estacionamentogratuito.checked;
-      var faceis = event.target.faceis.checked;
-      var razoaveis = event.target.razoaveis.checked;
-      var mau = event.target.mau.checked;
+      if (event.target.autocarro.checked) {
+        var autocarro = "Autocarro";
+      }
+      if (event.target.metro.checked) {
+        var metro = "Metro";
+      }
+      if (event.target.comboio.checked) {
+        var comboio = "Comboio";
+      }
+      if (event.target.estacionamentopago.checked) {
+        var estacionamentopago = "Estacionamento Pago";
+      }
+      if (event.target.estacionamentogratuito.checked) {
+        var estacionamentogratuito = "Estacionamento Gratuito";
+      }
+      if (event.target.faceis.checked) {
+        var faceis = "Fáceis/Bons";
+      }
+      if (event.target.razoaveis.checked) {
+        var razoaveis = "Razoáveis";
+      }
+      if (event.target.mau.checked) {
+        var mau = "Poucos/Maus";
+      }
 
       // Insert a task into the collection
       Tasks.insert({
@@ -107,9 +191,15 @@ if (Meteor.isClient) {
 
       input.set(field);
 
+      searchMode.set(true);
+      mainMode.set(false);
+      loginMode.set(false);
+      addMode.set(false);
+      singleMode.set(false);
 
       // Clear form
       event.target.field.value = "";
+
 
 
     }
@@ -128,7 +218,7 @@ if (Meteor.isServer) {
   $.fn.menumaker = function(options) {
       
       var cssmenu = $(this), settings = $.extend({
-        title: "Menu",
+        title: "Study@",
         format: "dropdown",
         breakpoint: 768,
         sticky: false
@@ -151,22 +241,6 @@ if (Meteor.isServer) {
               }
             }
           });
-
-          multiTg = function() {
-            cssmenu.find(".has-sub").prepend('<span class="submenu-button"></span>');
-            cssmenu.find('.submenu-button').on('click', function() {
-              $(this).toggleClass('submenu-opened');
-              if ($(this).siblings('ul').hasClass('open')) {
-                $(this).siblings('ul').removeClass('open').hide();
-              }
-              else {
-                $(this).siblings('ul').addClass('open').show();
-              }
-            });
-          };
-
-          if (settings.format === 'multitoggle') multiTg();
-          else cssmenu.addClass('dropdown');
         }
 
         else if (settings.format === 'select')
@@ -216,22 +290,4 @@ if (Meteor.isServer) {
 
       });
   };
-})(jQuery);
-
-(function($){
-$(document).ready(function(){
-
-$(document).ready(function() {
-  $("#cssmenu").menumaker({
-    title: "Menu",
-    format: "dropdown"
-  });
-
-  $("#cssmenu a").each(function() {
-    var linkTitle = $(this).text();
-    $(this).attr('data-title', linkTitle);
-  });
-});
-
-});
 })(jQuery);

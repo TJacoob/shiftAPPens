@@ -1,0 +1,47 @@
+<template name="singleplace">
+
+    <div class="col-md-8">
+        <h1><span class="text">{{name}}</span></h1>
+        <h2><span class="text">{{city}}</span>, <span class="text">{{country}}</span></h2>
+        <h4><span class="text">{{type}}</span></h4>
+        <h3><span class="text">Rating: {{rating}}</span></h3>
+    </div>
+
+    <div class="col-md-4" >
+        <div class="thumbnail">
+            <img src="http://placehold.it/350x150" alt="..." />
+        </div>
+    </div>  
+
+    <hr>
+
+    <div class="col-md-12">
+
+        <h3><span class="text">{{location}}</span></h3>
+        <h4><span class="text">Nas proximidades: {{close_locations}}</span></h4>
+
+        <hr>
+
+        <h3>Descrição:</h3>
+        <p><span class="text">{{description}}</span></p>
+
+        <h3>Opinião:</h3>
+        <p><span class="text">{{opinion}}</span></p>
+
+        <hr>
+
+        <h4>Acessos:</h4>
+        <p><span class="text">{{autocarro}}</span></p>
+        <p><span class="text">{{comboio}}</span></p>
+        <p><span class="text">{{metro}}</span></p>
+        <p><span class="text">{{estacionamentopago}}</span></p>
+        <p><span class="text">{{estacionamentogratuito}}</span></p>
+        <br>
+        <h4>O autor classifica os acessos de:</h4>
+        <p><span class="text">{{faceis}}</span></p>
+        <p><span class="text">{{razoaveis}}</span></p>
+        <p><span class="text">{{mau}}</span></p>
+
+    </div>
+   
+</template>

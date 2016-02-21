@@ -216,6 +216,17 @@
 }
 }
 
+#logostudy
+{
+  width: 8em ;
+  height: auto ;
+  max-width: 30%;
+  position: fixed ;
+  left: 1em ;
+  top: 0.7em ;
+  z-index: 10 ;
+}
+
 .spacer
 {
   width: 100%;
@@ -260,4 +271,36 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #f5f5f5;
+}
+
+/* JUMBOTRON */
+
+.jumbotron 
+{
+  background-image: url("/images/tagus.png");
+  background-size: cover ;
+  background-position: center;
+}
+
+/* IMAGES */
+
+.post-content {
+    background: none repeat scroll 0 0 #FFffff;
+    opacity: 0.5;
+    margin: 0 auto;
+    margin-top: -54px;
+    text-align:center
+    position: relative;
+    width:40%;
+
+    
+}
+
+.thumbnail {
+    margin:0 auto;
+    text-align:center;
+}
+
+.wrapper {
+    text-align:center;
 }
