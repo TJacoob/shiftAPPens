@@ -27,10 +27,12 @@
 
   <div class="spacer"></div>
   
-  <div class="container">
-	  <div class="row">
-		  {{> search}}
-	  </div>
+  <div class="jumbotron">
+	<div class="container">
+	  	<div class="row">
+			{{> search}}
+	  	</div>
+  	</div>
   </div>
 
   <div class="container">
@@ -72,8 +74,10 @@
 </body>
 
 <template name="search">
-	<form class="newtask">
-		<input type="text" name="field" placeholder="Search:"/>
-		<input type="submit" value="GO" />
-	</form>
+	<div class="inner-addon right-addon">
+		<form class="newtask">
+        	<i class="glyphicon glyphicon-search"></i>
+			<input type="text" class="form-control" name="field" placeholder="O que procuras?"/>
+		</form>
+	</div>		
 </template>
