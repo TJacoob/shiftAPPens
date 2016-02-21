@@ -1,4 +1,18 @@
 <template name="form">
+      <script type="text/javascript">
+        var feedback = function (res) {
+            if (res.success === true) {
+                document.querySelector('.status').classList.add('bg-success');
+                document.querySelector('.status').innerHTML = 'Image url: ' + res.data.link;
+                document.getElementById("imagelink").setAttribute('value', res.data.link );
+            }
+        };
+
+        new Imgur({
+            clientid: '5d83532875b3423',
+            callback: feedback
+        });
+    </script>  
   <form class="new-task">
     <div class="spacer"></div>
     <div class="container">
@@ -7,10 +21,15 @@
     </div>
     <div class="container">
     
+      <input type="hidden" id="imagelink" name="imagem" >
       <input type="text" class="form-control" name="name" placeholder="Nome do sítio" />
       <input type="text" class="form-control" name="country" placeholder="País" />
       <input type="text" class="form-control" name="city" placeholder="Cidade" />
 
+    </div>
+    <hr>
+      <div class="col-md">
+        <div class="dropzone"></div>
     </div>
     <hr>
     <div class="container">
@@ -29,15 +48,8 @@
         <input type="text" class="form-control input-lg" name="description" placeholder="Descreve o sítio" />
         <span class="help-block">Aqui, explica o que é que se faz neste sítio, e quais as condições que existem.</span>
         <input type="text" class="form-control input-lg" name="opinion" placeholder="Qual é a tua opinião sobre este sítio?" />
-        <span class="help-block">Agora, descreve o que torna este sítio bom ou mau para ti.</span>        
-     <!-- <input type="file" class="form-control" name="pictures" />
-      <hr/>
-        {{#each images}}
-          <div>
-            {{this.name}}: <a href="{{this.url}}" target="_blank"><img width="50" src="{{this.url}}" alt="" class="thumbnail" /></a>
-          </div>
-            {{/each}}  -->
-      </div>
+        <span class="help-block">Agora, descreve o que torna este sítio bom ou mau para ti.</span>  
+        </div>      
     <hr>
     <div class="container">
       <h3>Acessos</h3>
